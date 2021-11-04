@@ -195,47 +195,79 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
-function getReviewByRating(/* code here */) {
-  /* code here */
+console.log("******************** STRETCH 1 ***********************");
+
+function getReviewByRating(array, rating) {
+  let ratingArr = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].rating >= rating && array[i].rating < rating + 1) {
+      ratingArr.push(array[i]);
+    }
+  }
+  return ratingArr;
 }
+
+console.log(getReviewByRating(reviews, 4));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
 Use the getLongReviews function below to do the following:
-  1. Receive the array that holds all the reviews
-  2. Return an array with all the reviews that have more than 15 words in their feedback
+1. Receive the array that holds all the reviews
+2. Return an array with all the reviews that have more than 15 words in their feedback
 
-  For example: getLongReviews(reviews) would return:
-  [
-    {name: "Wen", rating: 4.5, feedback:"I don't leave my house often, but when I do, it's for this place. Highly reccomend."},
-    {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
-    {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }
-  ]
+For example: getLongReviews(reviews) would return:
+[
+  {name: "Wen", rating: 4.5, feedback:"I don't leave my house often, but when I do, it's for this place. Highly reccomend."},
+  {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
+  {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }
+]
 */
+console.log("******************** STRETCH 2 ***********************");
 
-function getLongReviews(/* code here */) {
-  /* code here */
+function getLongReviews(array) {
+  let longReviews = [];
+  for (let i = 0; i < array.length; i++) {
+    let wordCount = array[i].feedback.split(" ").length;
+    if (wordCount > 15) {
+      longReviews.push(array[i]);
+    }
+  }
+  return longReviews;
 }
+
+console.log(getLongReviews(reviews));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
 This stretch goal does not use the reviews data!  You create your own object in this stretch goal.
 
 Use the carMaker function below to do the following:
-  1. Receive a value representing the odometer (how many miles it's been driven) and use that when creating the object
-  2. Create a drive method inside the object that increases the odometer value
-  3. Return the object
-  4. The returned object with the odometer value should have the following characteristics:
-     a. The drive method which, when called, takes a distance value as its parameter
-     b. The drive method should also cause the odometer value in the object to be increased by the distance
-     c. Then the drive method should return the updated value of the odometer
+1. Receive a value representing the odometer (how many miles it's been driven) and use that when creating the object
+2. Create a drive method inside the object that increases the odometer value
+3. Return the object
+4. The returned object with the odometer value should have the following characteristics:
+a. The drive method which, when called, takes a distance value as its parameter
+b. The drive method should also cause the odometer value in the object to be increased by the distance
+c. Then the drive method should return the updated value of the odometer
 
-  For example: Let's say we created the object in the variable car1 with an odometer value of 10.
-  Then we called car1.drive(100)
-  It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
+For example: Let's say we created the object in the variable car1 with an odometer value of 10.
+Then we called car1.drive(100)
+It would return 110 because it was created with 10 as the odometer and we added 100 to it with the drive method 
 */
+console.log("******************** STRETCH 3 ***********************");
 
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(odometer) {
+  let newCar = {};
+  newCar = {
+    odometer,
+    drive: function (miles) {
+      this.odometer += miles;
+    },
+  };
+  return newCar;
 }
+
+let myCar = carMaker(10);
+myCar.drive(100);
+console.log(myCar.odometer);
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
